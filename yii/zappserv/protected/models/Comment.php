@@ -8,6 +8,7 @@
  * @property string $created
  * @property string $data
  * @property string $user
+ * @property integer $time
  */
 class Comment extends CActiveRecord
 {
@@ -37,11 +38,12 @@ class Comment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('time', 'numerical', 'integerOnly'=>true),
 			array('user', 'length', 'max'=>16),
 			array('created, data', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, created, data, user', 'safe', 'on'=>'search'),
+			array('id, created, data, user, time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +68,7 @@ class Comment extends CActiveRecord
 			'created' => 'Created',
 			'data' => 'Data',
 			'user' => 'User',
+			'time' => 'Time',
 		);
 	}
 
@@ -84,20 +87,20 @@ class Comment extends CActiveRecord
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('data',$this->data,true);
 		$criteria->compare('user',$this->user,true);
+		$criteria->compare('time',$this->time);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
   
-  // custom:  
-  
-	public function afterFind() {
-		$this->data = json_decode($this->data);
-	}
-  
-	public function beforeSave() {
-		$this->data = json_encode($this->data);
-    return true;
-	}
+// custom:  
+ 	public function afterFind() {
+ 		$this->data = json_decode($this->data);
+ 	}
+   
+ 	public function beforeSave() {
+ 		$this->data = json_encode($this->data);
+     return true;
+ 	}
 }

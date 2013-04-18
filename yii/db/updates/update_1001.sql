@@ -1,0 +1,1 @@
+ALTER TABLE  `comments` ADD  `time` INT NULL DEFAULT  '0';

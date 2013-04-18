@@ -1,2 +1,7 @@
 
 .DS_Store
+
+yii/zappserv/protected/runtime/application.log
+
+yii/zappserv/protected/runtime/gii-1.1.13/ModelCode.php
+/yii/zappserv/assets/

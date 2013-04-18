@@ -118,9 +118,45 @@ class SiteController extends Controller
 		$this->renderJSON($result);
 	}
   
-	public function actionCommentSave() {
-    /**
-  use:
+  /**
+   * use: /zappserv/index.php?r=site/commentList&lastId=3&startTime=0
+   * @param type $lastId
+   * @param type $startTime
+   */
+	public function actionCommentList($lastId = null, $startTime = null) {
+		$result = array();
+    $filters = array();
+    $params = array();
+    
+    $categoryFilter = "1";
+		if ($lastId) {
+      $filters[] = "id>:id";
+      $params[':id'] = $lastId;
+		}
+		if ($startTime) {
+      $filters[] = "time>:time";
+      $params[':time'] = $startTime;
+		}
+		
+		$query = array(
+      'condition' => implode(' AND ', $filters),
+      'params' => $params,
+      'order' => 'time'
+		);
+		
+		$rows = Comment::model()->findAll($query);
+    
+    if ($rows && count($rows)) {
+      foreach ($rows as $row) {
+        $result[] = $row->getAttributes();
+      }
+    }
+    
+		$this->renderJSON($result);
+	}
+  
+  /**
+   * use:
   $.ajax({
     type: 'post',
     dataType: "json",
@@ -130,16 +166,18 @@ class SiteController extends Controller
       data: {
         message: 'hi',
         position: 'bottom'
-      }
+      },
+      time: 3000, // in ms
+      video: 'den_s7e1' // unique identifier for show/episode
     },
     success: function (data) {
       console.log('data', data);
     }    
   });
+   * @return type
+   */
+	public function actionCommentSave() {
 
-     */
-    
-    
 		$params = $_POST;
 //		$params = array(
 //				'data' => json_encode($params),

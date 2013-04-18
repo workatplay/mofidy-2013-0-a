@@ -1,4 +1,4 @@
-serverUrl = "http://tvhackfest.workatplay.com/server.php?_url=";
+serverUrl = "http://localhost:8888/zappserve/index.php?r=";
 
 ready = false;
 
@@ -15,14 +15,6 @@ var programTitle = "Dragons' Den Season 7, Episode 12";
 var referenceOffset = 0;
 
 var seconds = '0';
-var data = {
-  '0': {
-    claps: 0,
-    comments: []
-  }
-};
-var claps = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var maxClaps = 0;
 
 function onDeviceReady() {
   ready = true;
@@ -44,21 +36,9 @@ function onDeviceReady() {
       }
     });
 
-    window.seconds = referenceOffset.toString();
-//    comments.showTime = referenceOffset;
+    comments.init(window.referenceOffset, window.programTitle);
 
-    // for (var i = 0; i < resultObject.content_attrs.length; i++) {
-    //   var pair = resultObject.content_attrs[i];
-    //   if (pair.name == "program_title" && pair.value) {
-    //     window.programTitle = pair.value;
-    //     $('#myshow').text(programTitle);
-    //     comments.init();
-    //     myShowIsSet = true;
-    //   } else if (pair.name == "reference_offset" && pair.value) {
-    //     window.referenceOffset = parseInt(pair.value[0], 10);
-    //     window.referenceOffset = Math.round(window.referenceOffset / 5) * 5;
-    //   }
-    // }
+    window.seconds = referenceOffset.toString();
   });
 
   setTimeout(function() {

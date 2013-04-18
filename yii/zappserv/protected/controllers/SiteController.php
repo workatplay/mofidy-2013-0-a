@@ -123,7 +123,7 @@ class SiteController extends Controller
    * @param type $lastId
    * @param type $startTime
    */
-	public function actionCommentList($lastId = null, $startTime = null) {
+	public function actionCommentList($video, $lastId = null, $startTime = null) {
 		$result = array();
     $filters = array();
     $params = array();
@@ -136,6 +136,10 @@ class SiteController extends Controller
 		if ($startTime) {
       $filters[] = "time>:time";
       $params[':time'] = $startTime;
+		}
+		if ($video) {
+      $filters[] = "video=:video";
+      $params[':video'] = $video;
 		}
 		
 		$query = array(

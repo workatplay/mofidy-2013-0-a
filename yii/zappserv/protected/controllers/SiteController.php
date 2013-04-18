@@ -119,7 +119,7 @@ class SiteController extends Controller
 	}
   
   /**
-   * use: /zappserv/index.php?r=site/commentList&lastId=3&startTime=0
+   * use: /zappserv/index.php?r=site/commentList&video=theshowep&lastId=0&startTime=0
    * @param type $lastId
    * @param type $startTime
    */

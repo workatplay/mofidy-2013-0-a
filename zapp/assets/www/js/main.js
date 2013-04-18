@@ -31,12 +31,12 @@ function onDeviceReady() {
       if (attr.name === 'program_title') {
         window.programTitle = attr.value;
       } else if (attr.name === 'reference_offset') {
-        var offet = parseInt(pair.value[0], 10);
-        window.referenceOffset = Math.round(window.referenceOffset / 5) * 5;
+        window.referenceOffset = parseInt(pair.value[0], 10);
       }
     });
 
-    comments.init(window.referenceOffset, window.programTitle);
+    timer.init(window.referenceOffset);
+    comments.init(timer, window.programTitle);
 
     window.seconds = referenceOffset.toString();
   });

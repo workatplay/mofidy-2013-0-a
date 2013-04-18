@@ -1,6 +1,6 @@
 var comments = {
   userName: '',
-  showTime: 0,
+  timer: null,
   showTitle: '',
   comments: [],
   maxId: 0.
@@ -15,7 +15,7 @@ var comments = {
         msg: msg,
         position: 'bottom'
       },
-      time: self.showTime,
+      time: self.timer.time,
       video: self.showTitle
     };
     self.addComment([comment]);
@@ -30,10 +30,10 @@ var comments = {
       }    
     });
   },
-  init: function (showStartTime, newShowTitle) {
+  init: function (newTimer, newShowTitle) {
     var self = this;
 
-    self.showTime = showStartTime;
+    self.timer = newTimer;
     self.showTitle = newShowTitle;
     self.userName = 'user' + Math.round(Math.random()*100);
     $('#myname').html(self.userName);
@@ -41,13 +41,6 @@ var comments = {
 
     // self.commentList = $('#commentList');
 
-    self.poll();
-    setInterval(_.bind(self.timer, self), 5000);
-  },
-  timer: function () {
-    var self = this;
-    
-    self.showTime = self.showTime + 5;
     self.poll();
   },
   poll: function () {

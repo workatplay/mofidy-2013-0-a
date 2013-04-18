@@ -106,4 +106,52 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+  
+	public function actionCommentLoad($id) {
+		$result = false;
+		if (!is_null($id)) {
+			$row = Comment::model()->findByPk($id);
+			if ($row) {
+				$result = $row->getAttributes();
+			}
+		}
+		$this->renderJSON($result);
+	}
+  
+	public function actionCommentSave() {
+    /**
+  use:
+  $.ajax({
+    type: 'post',
+    dataType: "json",
+    url: '/zappserv/index.php?r=site/commentSave',
+    data: {
+      user: 'ronn',
+      data: {
+        message: 'hi',
+        position: 'bottom'
+      }
+    },
+    success: function (data) {
+      console.log('data', data);
+    }    
+  });
+
+     */
+    
+    
+		$params = $_POST;
+//		$params = array(
+//				'data' => json_encode($params),
+//				'created' => date('c'),
+//		);
+
+		$comment = new Comment;
+		$comment->setAttributes($params);
+
+		if ($comment->save()) {
+			return $this->actionCommentLoad($comment->id);
+		}
+		$this->renderJSON(false);
+	}
 }

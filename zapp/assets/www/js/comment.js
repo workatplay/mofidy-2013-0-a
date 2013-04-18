@@ -1,132 +1,71 @@
 var comments = {
-  name: '',
+  userName: '',
   showTime: 0,
-  commentList: null, 
-  myComments: {},
-  comments: {},
-  addComment: function (comment) {
-    var self = this;
-    var _comment = $("<div>").html(comment.name + ': ' + comment.msg);  
-    
-    console.log('comment', comment);
-    
-    self.commentList.prepend(_comment);
-    setTimeout(function () {
-      _comment.fadeOut(1000);
-    }, 5000);
-  }, 
-  populateComments: function (t) {
-    var self = this;
-    if (!_.size(self.comments)) return;
-    if (self.comments[t] && self.comments[t].length) {
-      for (var i = 0; i < self.comments[t].length; i++) {
-        self.addComment(self.comments[t][i]);
-      
-      }
-    }
+  showTitle: '',
+  comments: [],
+  maxId: 0.
+
+  addComments: function (comments) {
   },
   sendComment: function (msg) {
     var self = this;
     var comment = {
-      name: self.name,
+      user: self.userName,
+      data: {
+        msg: msg,
+        position: 'bottom'
+      },
       time: self.showTime,
-      msg: msg
+      video: self.showTitle
     };
-    self.addComment(comment);
-    
+    self.addComment([comment]);
+
     $.ajax({
+      type: 'post',
       dataType: "json",
-      url: serverUrl + 'js/data/comments' + programTitle + '.json',
+      url: serverUrl + 'site/commentSave',
       data: comment,
       success: function (data) {
-        console.log('save', data);
-      }
+        console.log('data', data);
+      }    
     });
+  },
+  init: function (showStartTime, newShowTitle) {
+    var self = this;
+
+    self.showTime = showStartTime;
+    self.showTitle = newShowTitle;
+    self.userName = 'user' + Math.round(Math.random()*100);
+    $('#myname').html(self.userName);
+    self.comments = [];
+
+    // self.commentList = $('#commentList');
+
+    self.poll();
+    setInterval(_.bind(self.timer, self), 5000);
   },
   timer: function () {
     var self = this;
     
-    self.showTime++;
-    self.populateComments(self.showTime);
+    self.showTime = self.showTime + 5;
+    self.poll();
   },
-  init: function () {
-    var self = this;
-    
-    self.showTime = 0;
-    self.name = 'user'+Math.round(Math.random()*100);
-    $('#myname').html(self.name);
-    
-    self.commentList = $('#commentList');
-    
+  poll: function () {
     $.ajax({
       dataType: "json",
-      url: serverUrl + 'js/data/comments' + programTitle + '.json',
-      //  data: data,
-      success: function (data) {
-        //        self.comments = data;
-        self.comments = {};
-        for (var i = 0; i < data.length; i++) {
-          var comment = data[i];
-          if (!self.comments[comment.time]) {
-            self.comments[comment.time] = [];
-          }
-          self.comments[comment.time].push(comment);
-          
-        //          console.log('self.comments', self.comments);
-        }
-      }
-    });
-    
-    setInterval(_.bind(self.timer, self), 1000);
-  },
-  boot: function () {
-    console.log('comment boot');
-    
-    var commentField = $('#commentMsg');
-    var submit = function (str) {
-      alert(str);
-    };
-    console.log('commentField', commentField);
-  
-//     comments.init();
-    commentField.on('keypress', function(e,d) {
-      if (e.charCode == 13) { // enter pressed
-      
-        comments.sendComment.call(comments, commentField.val());
-        setTimeout(function () {
-          commentField.val('');
-        }, 10);
-      }
-    });
-  
-    $('#comment').swipe( {
-      swipe:function(event, direction, distance, duration, fingerCount) {
-        if (direction == 'right') {
-          $.ajax({
-            dataType: "json",
-            url: serverUrl + 'js/data/comments' + programTitle + '.json',
-            data: {
-              clean:1
-            },
-            success: function (data) {
-              console.log('clean', data);
-            }
-          });
-        }
-      },
-      threshold:0
-    });
+      url: serverUrl + 'site/commentList&video=' + self.showTitle + '&lastId=' self.maxId + '&startTime=' + self.showTime,
 
-    commentField.on('blur', function () {
-      commentField.val(''); 
+      success: function (data) {
+console.log(data);
+        // self.comments = {};
+        // for (var i = 0; i < data.length; i++) {
+        //   var comment = data[i];
+        //   if (!self.comments[comment.time]) {
+        //     self.comments[comment.time] = [];
+        //   }
+        //   self.comments[comment.time].push(comment);
+        // }
+      }
     });
   }
 };
-
-//$(document).ready(function() {
-  
-//});
-//
-$(document).on('ready', function () {
-  
-  });

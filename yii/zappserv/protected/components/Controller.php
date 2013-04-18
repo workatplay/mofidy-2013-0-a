@@ -23,6 +23,7 @@ class Controller extends CController
 	
 	public function renderJSON($val, $options = 0, $headers = array()) 
 	{	
+    header('Access-Control-Allow-Origin: *');
 		header('Content-type: application/json');
 		foreach($headers as $header)
 		{

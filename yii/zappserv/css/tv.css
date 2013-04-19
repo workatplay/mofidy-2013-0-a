@@ -81,13 +81,39 @@ body {
   color: #222;
 }
 .region .dot {
+  display: none;
   position: absolute;
+  z-index: 5;
 }
-
 .region.top-left {
   width: 30%;
   left: 5%;
   top: 10%;
+}
+/*
+.region.top-left .dot-a {
+  right: -5%;
+  bottom: -5%;
+}
+.region.top-left .dot-b {
+  right: -7.5%;
+  bottom: -7.5%;
+}
+.region.top-left .dot-c {
+  right: -10%;
+  bottom: -10%;
+}
+.region.top-right .dot-a {
+  left: -5%;
+  bottom: -5%;
+}
+.region.top-right .dot-b {
+  left: -7.5%;
+  bottom: -7.5%;
+}
+.region.top-right .dot-c {
+  left: -10%;
+  bottom: -10%;
 }
 .region.top-right {
   width: 30%;

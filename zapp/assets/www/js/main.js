@@ -34,15 +34,18 @@ function onDeviceReady() {
       }
     });
 
+    user.init('Ronn');
     timer.init(window.referenceOffset);
-    comments.init(timer, window.programTitle);
+    comments.init(user, timer, window.programTitle);
   });
 
   setTimeout(function() {
     if (!myShowIsSet) {
       $('#myshow').text(programTitle);
+
+      user.init('Ronn');
       timer.init(window.referenceOffset);
-      comments.init(timer, window.programTitle);
+      comments.init(user, timer, window.programTitle);
     }
   }, 2000);
 }
@@ -94,7 +97,7 @@ $('.feed-selector').on('change', 'input', function (e) {
     }
     else if (self.id === 'feed-me') {
       command = 'changeFeed';
-      data = {user: 'Ronn'};
+      data = {user: window.user.name};
     }
     else if (self.id === 'feed-friends') {
       command = 'changeFeed';
@@ -107,7 +110,7 @@ $('.feed-selector').on('change', 'input', function (e) {
         dataType: "json",
         url: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php?r=site/commandSend',
         data: {
-          user: 'Ronn',
+          user: window.user.name,
           command: command,
           data: data
         },

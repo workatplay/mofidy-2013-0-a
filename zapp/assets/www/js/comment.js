@@ -1,6 +1,6 @@
 var comments = {
   serverUrl: "http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php",
-  userName: '',
+  user: null,
   timer: null,
   showTitle: '',
   comments: [],
@@ -26,7 +26,7 @@ var comments = {
     }
 
     var comment = {
-      user: self.userName,
+      user: self.user.name,
       data: {
         msg: msg,
         position: position
@@ -45,17 +45,16 @@ var comments = {
       }    
     });
   },
-  init: function (newTimer, newShowTitle) {
+  init: function (newUser, newTimer, newShowTitle) {
     var self = this;
 
     if (self.intervalTimer) {
       clearInterval(self.intervalTimer);
     }
 
+    self.user = newUser;
     self.timer = newTimer;
     self.showTitle = newShowTitle;
-    self.userName = 'Ronn';
-    $('#myname').html(self.userName);
     self.comments = [];
 
     // self.commentList = $('#commentList');

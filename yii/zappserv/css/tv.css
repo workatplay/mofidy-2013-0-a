@@ -31,8 +31,8 @@ body {
   top: 50%;
   left: 50%;
   margin: -64px 0 0 -64px;
-  background: rgba(255,255,255,0.8) url('graphics/rewind.png') no-repeat 50% 50%;
-  background-size: contain;
+  background: rgba(255,255,255,0.9) url('graphics/rewind.png') no-repeat 50% 50%;
+  background-size: 80%;
   opacity: 0;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;

@@ -9,6 +9,7 @@
  * @property string $data
  * @property string $user
  * @property integer $time
+ * @property string $video
  */
 class Comment extends CActiveRecord
 {
@@ -40,10 +41,11 @@ class Comment extends CActiveRecord
 		return array(
 			array('time', 'numerical', 'integerOnly'=>true),
 			array('user', 'length', 'max'=>16),
+			array('video', 'length', 'max'=>128),
 			array('created, data', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, created, data, user, time', 'safe', 'on'=>'search'),
+			array('id, created, data, user, time, video', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +71,7 @@ class Comment extends CActiveRecord
 			'data' => 'Data',
 			'user' => 'User',
 			'time' => 'Time',
+			'video' => 'Video',
 		);
 	}
 
@@ -88,11 +91,13 @@ class Comment extends CActiveRecord
 		$criteria->compare('data',$this->data,true);
 		$criteria->compare('user',$this->user,true);
 		$criteria->compare('time',$this->time);
+		$criteria->compare('video',$this->video,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+  
   
 // custom:  
  	public function afterFind() {

@@ -123,7 +123,7 @@ class SiteController extends Controller
    * @param type $lastId
    * @param type $startTime
    */
-	public function actionCommentList($video, $lastId = null, $startTime = null) {
+	public function actionCommentList($video = null, $lastId = null, $startTime = null) {
 		$result = array();
     $filters = array();
     $params = array();
@@ -171,7 +171,7 @@ class SiteController extends Controller
         message: 'hi',
         position: 'bottom'
       },
-      time: 3000, // in ms
+      time: 30, // in s
       video: 'den_s7e1' // unique identifier for show/episode
     },
     success: function (data) {

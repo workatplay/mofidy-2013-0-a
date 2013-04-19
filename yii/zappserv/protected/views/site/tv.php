@@ -7,3 +7,8 @@ $cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);
   <source src="<?php print $base ?>/shows/DragonsDenS7E12.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+
+<script id="comment-template" type="text/template">
+  <span></span>
+</script>

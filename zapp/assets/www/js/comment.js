@@ -1,5 +1,5 @@
 var comments = {
-  serverUrl: "http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php?r=",
+  serverUrl: "http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php",
   userName: '',
   timer: null,
   showTitle: '',
@@ -8,27 +8,38 @@ var comments = {
   intervalTimer: null,
 
   addComments: function (comments) {
+    var self = this;
+
+    _.each(comments, function (comment) {
+      comment.id = parseInt(comment.id);
+      comment.time = parseInt(comment.time);
+
+      self.comments.push(comment);
+
+      if (comment.id > self.maxId) {
+        self.maxId = comment.id;
+      }
+    });
   },
-  sendComment: function (msg) {
+  sendComment: function (msg, position) {
     var self = this;
     var comment = {
       user: self.userName,
       data: {
         msg: msg,
-        position: 'bottom'
+        position: position
       },
       time: self.timer.time,
       video: self.showTitle
     };
-    self.addComment([comment]);
 
     $.ajax({
       type: 'post',
       dataType: "json",
-      url: self.serverUrl + 'site/commentSave',
+      url: self.serverUrl + '?r=site/commentSave',
       data: comment,
       success: function (data) {
-        console.log('data', data);
+        self.addComment([data]);
       }    
     });
   },
@@ -55,18 +66,16 @@ var comments = {
 
     $.ajax({
       dataType: "json",
-      url: self.serverUrl + 'site/commentList&video=' + self.showTitle + '&lastId=' + self.maxId + '&startTime=' + self.showTime,
+      url: self.serverUrl + '&video=' + self.showTitle + '&lastId=' + self.maxId + '&startTime=' + self.showTime,
+      data: {
+        r: 'site/commentList',
+        video: self.showTitle,
+        lastId: self.maxId,
+        startTime: self.showTime
+      },
 
       success: function (data) {
-console.log(data);
-        // self.comments = {};
-        // for (var i = 0; i < data.length; i++) {
-        //   var comment = data[i];
-        //   if (!self.comments[comment.time]) {
-        //     self.comments[comment.time] = [];
-        //   }
-        //   self.comments[comment.time].push(comment);
-        // }
+        self.addComments(data);
       }
     });
   }

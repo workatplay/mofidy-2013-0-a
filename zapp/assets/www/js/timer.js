@@ -1,5 +1,6 @@
 var timer = {
   time: 0,
+  totalLength: 2613,
   intervalTimer: null,
 
   init: function (startTime) {
@@ -15,6 +16,9 @@ var timer = {
   timer: function () {
     var self = this;
     
-    self.time = self.time + 5;
+    self.time = Math.min(self.time + 5, self.totalLength);
+
+    // var completion = (self.time / self.totalLength) * 100;
+    // $('#timeline').attr('value', completion).slider();
   }
 };

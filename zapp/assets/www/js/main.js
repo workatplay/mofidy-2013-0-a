@@ -12,6 +12,8 @@ var contentId = "5a7780f2-a676-11e2-ae21-22000af492d5";
 var programTitle = "Dragons' Den Season 7, Episode 12";
 var referenceOffset = 0;
 
+var commentData = {};
+
 function onDeviceReady() {
   ready = true;
   var myShowIsSet = false;
@@ -26,6 +28,7 @@ function onDeviceReady() {
     _.each(resultObject.content_attrs, function (attr) {
       if (attr.name === 'program_title') {
         window.programTitle = attr.value;
+        $('#myshow').text(programTitle);
       } else if (attr.name === 'reference_offset') {
         window.referenceOffset = parseInt(pair.value[0], 10);
       }
@@ -53,3 +56,8 @@ window.onload = function () {
 
 // If PhoneGap, run when ready.
 document.addEventListener('deviceready', onDeviceReady, false);
+
+$('#trigger-placement').click(function () {
+  window.commentData['message'] = $('textarea[name=message]').val();
+  console.log(window.commentData);
+});

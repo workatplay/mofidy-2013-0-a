@@ -3,6 +3,7 @@ $(document).ready(function() {
   var intervalDur = 1;
   var lastId = 0;
   var comments = [];
+  var filterUser = false;
   var $player = $('video');
  
   var getComments = function () {
@@ -33,12 +34,13 @@ $(document).ready(function() {
     }
     var $comment = $('#comment-template').clone();
     $comment.removeAttr('id', '');
-    $comment.addClass(comment.position);
+    $comment.addClass(comment.data.position);
     $comment.find('.msg').html(comment.data.msg);
     $comment.appendTo($('#comments'));
-    
+    $comment.fadeIn();
+      
     setTimeout(function () {
-      $comment.remove();
+//      $comment.remove();
     }, 5000);
     
     console.log('$comment', $comment);
@@ -48,9 +50,18 @@ $(document).ready(function() {
     
     while (comments.length > 0) {
       var comment = comments.shift();
+      var show = true;
       comment.time = parseInt(comment.time);
       
-      if (curVideoTime-1 < comment.time && comment.time < curVideoTime) {
+      if (filterUser) {
+        if (filterUser == 'Friends') {
+          show = filterUser != comment.user && 'Official' != comment.user;
+        } else {
+          show = filterUser == comment.user;
+        }
+      }
+      
+      if (show && curVideoTime-1 < comment.time && comment.time < curVideoTime) {
         showComment(comment);
       }
       putBack.push(comment);
@@ -65,9 +76,20 @@ $(document).ready(function() {
         r: 'site/variableSend',
         name: 'currentTime.'+app.user,
         data: curVideoTime 
+      }
+    });    
+  };
+  var applyCommand = function () {
+    $.ajax({
+      url: app.server,
+      data: {
+        r: 'site/commandRetrieve',
+        user: app.user 
       },
       success: function (data) {
-        console.log(curVideoTime, data);
+        if (data.command == 'changeFeed') {
+          filterUser = data.user;
+        }
       }
     });    
   };
@@ -82,6 +104,7 @@ $(document).ready(function() {
       
       getComments();
       showComments();
+      applyCommand();
       saveCurrentTime();
     }, intervalDur*1000);
   })

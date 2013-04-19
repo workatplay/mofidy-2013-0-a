@@ -4,7 +4,7 @@ $cs = Yii::app()->getClientScript();
 $cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);  
 ?>
 
-<div id="comments" style="position: absolute; z-index: 2;">
+<div id="comments" class="comment" style="position: absolute; z-index: 2;">
 </div>
 
 <video width="100%" height="100%" controls>

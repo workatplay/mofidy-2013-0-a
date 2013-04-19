@@ -110,6 +110,10 @@ $(document).ready(function() {
             filterUser = data.data.user;
             setBubblesBy();
           }
+          if (data.command == 'goTo') {
+            filterUser = app.user;
+            $player[0].currentTime = data.data.time;
+          }
         }
       }
     });    

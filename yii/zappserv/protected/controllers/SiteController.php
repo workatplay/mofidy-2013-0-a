@@ -200,4 +200,57 @@ class SiteController extends Controller
 	public function actionTv() {
     $this->render('tv');
 	}
+
+  /**
+   * use: /zappserv/index.php?r=site/commentList&video=theshowep&lastId=0&startTime=0
+   * @param type $lastId
+   * @param type $startTime
+   */
+	public function actionCommandRetrieve($user) {
+		$result = (object)array();
+		$command = Command::model()->find(array('condition' => 'user = :user', 'params' => array('user' => $user)));
+
+		if ($command) {
+	        $result = $command->getAttributes();
+	        $command->delete();
+		}
+
+		$this->renderJSON($result);
+	}
+
+  /**
+   * use:
+  $.ajax({
+    type: 'post',
+    dataType: "json",
+    url: '/zappserv/index.php?r=site/CommandSend',
+    data: {
+      user: 'ronn', // used to differentiate who the command is for
+      command: 'showComments',
+      data: {
+		user: 'DragonDen'
+      }
+    },
+    success: function (data) {
+      console.log('data', data);
+    }    
+  });
+   * @return type
+   */
+	public function actionCommandSend() {
+		$params = $_POST;
+
+		$command = Command::model()->find(array('condition' => 'user = :user', 'params' => array('user' => $_POST['user'])));
+		if (!$command) {
+			$command = new Command;
+		}
+
+		$command->setAttributes($params);
+
+		if ($command->save()) {
+			return $this->renderJSON(true);
+		}
+		$this->renderJSON(false);
+	}
+
 }

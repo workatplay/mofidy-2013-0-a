@@ -89,6 +89,16 @@ $('.placement').click(function () {
   }
 
   comments.sendComment(commentData['message'], commentData['position'], commentData['time']);
+
+  setTimeout(function () {
+    $('#show-zapp').click(function () {
+      console.log(window.commentData);
+      var that = this;
+      window.server.post('site/commandSend', {user: window.user.name, command: 'goTo', data: {time: window.commentData['time'] - 5}}, function (data) {
+        console.log('success');
+      });
+    });
+  }, 500);
 });
 
 $('.feed-selector').on('change', 'input', function (e) {

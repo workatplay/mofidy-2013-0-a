@@ -22,13 +22,5 @@
 
   <script type="text/javascript" src="jquery.mobile/jquery-1.9.1.js"></script>
   <script type="text/javascript" src="jquery.mobile/jquery.mobile-1.3.1.js"></script>
-  <script type="text/javascript">
-    $('show-zapp').click(function () {
-      var that = this;
-      window.server.post('site/commandSend', {user: window.user.name, command: 'goTo', data: {time: window.commentData['time'] - 5}}, function (data) {
-        console.log('success');
-      });
-    });
-  </script>
 </body>
 </html>

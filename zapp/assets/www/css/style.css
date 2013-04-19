@@ -1,12 +1,33 @@
 #placement-chooser {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50px;
-  bottom: 0;
-  background: #666;
+  position: relative;
+  width: 100%;
 }
-
+#placement-chooser .placement {
+  position: absolute;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+}
+#placement-chooser .placement:hover {
+  background: rgba(255,255,0, 0.25);
+}
+#placement-chooser .placement#place-top-left {
+  width: 50%;
+  height: 70%;
+  left: 0;
+  top: 0;
+}
+#placement-chooser .placement#place-top-right {
+  width: 50%;
+  height: 70%;
+  right: 0;
+  top: 0;
+}
+#placement-chooser .placement#place-bottom {
+  height: 30%;
+  width: 100%;
+  bottom: 0;
+}
 #placement-chooser img.backplate {
   width: 100%;
   height: auto;

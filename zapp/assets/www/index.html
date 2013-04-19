@@ -15,8 +15,8 @@
     <div class="ui-mobile-viewport" id="wrapper-main">
 
       <section data-role="page" id="feed">
-        <header class="ui-body" data-role="header">
-          <h3>You are watching: <span id="myshow">Dragon's Den Something Something</span></h3>
+        <header class="ui-bar" data-role="header">
+          <h3>You are watching: <span id="myshow">Loading...</span></h3>
           <form>
             <input type="range" name="timeline" id="timeline" data-highlight="true" min="0" max="100" value="50">
           </form>
@@ -61,17 +61,14 @@
             </ul>
           </article>
         </div>
-        <footer class="ui-body" data-role="footer" data-position="fixed">
+        <footer class="ui-bar" data-role="footer" data-position="fixed">
           <a href="#add" id="trigger-add">Add</a>
         </footer>
       </section>
 
       <section data-role="page" id="add">
-        <header class="ui-body" data-role="header" data-position="fixed">
+        <header class="ui-bar" data-role="header" data-position="fixed">
           <h3>You are watching: <span>Dragon's Den Something Something</span></h3>
-          <form>
-            <input type="range" name="timeline-add" id="timeline-add" data-highlight="true" min="0" max="100" value="50">
-          </form>
         </header>
         <div class="ui-body" data-role="content">
           <form>
@@ -79,24 +76,21 @@
             <textarea cols="40" rows="8" name="message" id="textarea"></textarea>
           </form>
         </div>
-        <footer class="ui-body" data-role="footer" data-position="fixed">
+        <footer class="ui-bar" data-role="footer" data-position="fixed">
           <a href="#placement" id="trigger-placement">Next</a>
         </footer>
       </section>
 
       <section data-role="page" id="placement">
-        <header class="ui-body" data-role="header" data-position="fixed">
+        <header class="ui-bar" data-role="header" data-position="fixed">
           <h3>You are watching: <span>Dragon's Den Something Something</span></h3>
-          <form>
-            <input type="range" name="timeline-placement" id="timeline-placement" data-highlight="true" min="0" max="100" value="50">
-          </form>
         </header>
         <div class="ui-body" data-role="content">
           <div id="placement-chooser">
-            <a href="#feed" class="placement" id="place-tl"></a>
-            <a href="#feed" class="placement" id="place-tr"></a>
+            <a href="#feed" class="placement" id="place-top-left"></a>
+            <a href="#feed" class="placement" id="place-top-right"></a>
             <a href="#feed" class="placement" id="place-bottom"></a>
-            <img src="http://placehold.it/800x800" class="backplate" />
+            <img src="http://placehold.it/1280x720" class="backplate" />
           </div>
         </div>
       </section>

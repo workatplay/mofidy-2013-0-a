@@ -35,10 +35,6 @@ $(document).ready(function() {
     var $container = $('#comments');
     var $comment = $('#comment-template').clone();
     $comment.removeAttr('id', '');
-<<<<<<< HEAD
-    $comment.addClass('bubble '+comment.data.position);
-=======
->>>>>>> nest comments
     $comment.find('.msg').html(comment.data.msg);
     $comment.appendTo($container.find('.'+comment.data.position));
     $comment.fadeIn();
@@ -47,7 +43,7 @@ $(document).ready(function() {
 //      $comment.remove();
     }, 5000);
     
-    console.log('$comment', $comment);
+    console.log('$comment', comment, $comment);
   };
   var showComments = function () {
     var putBack = [];

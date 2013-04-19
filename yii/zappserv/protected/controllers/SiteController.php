@@ -196,4 +196,8 @@ class SiteController extends Controller
 		}
 		$this->renderJSON(false);
 	}
+  
+	public function actionTv() {
+    $this->render('tv');
+	}
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2013 at 07:34 PM
+-- Generation Time: Apr 18, 2013 at 09:33 PM
 -- Server version: 5.5.9
 -- PHP Version: 5.3.6
 
@@ -61,4 +61,17 @@ CREATE TABLE `sessions` (
   `expire` int(11) DEFAULT NULL,
   `data` longblob,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `variables`
+--
+
+DROP TABLE IF EXISTS `variables`;
+CREATE TABLE `variables` (
+  `name` varchar(256) NOT NULL,
+  `data` longtext NOT NULL,
+  PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -12,6 +12,6 @@ $cs->registerScriptFile($base . '/js/tvComments.js', CClientScript::POS_END);
   Your browser does not support the video tag.
 </video>
 
-<div id="comment-template" style="background: white; border: 3px solid grey;">
+<div id="comment-template" style="background: white; border: 3px solid grey; display: none;">
   <span class="msg"></span>
 </div>

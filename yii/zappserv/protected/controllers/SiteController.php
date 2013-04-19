@@ -181,12 +181,7 @@ class SiteController extends Controller
    * @return type
    */
 	public function actionCommentSave() {
-
 		$params = $_POST;
-//		$params = array(
-//				'data' => json_encode($params),
-//				'created' => date('c'),
-//		);
 
 		$comment = new Comment;
 		$comment->setAttributes($params);

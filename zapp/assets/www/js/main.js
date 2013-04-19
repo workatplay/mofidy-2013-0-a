@@ -38,6 +38,8 @@ function onDeviceReady() {
     user.init('Ronn');
     timer.init(server, user, window.referenceOffset);
     comments.init(server, user, timer, window.programTitle);
+
+    // Turn off loading overlay
   });
 
   setTimeout(function() {
@@ -48,6 +50,8 @@ function onDeviceReady() {
       user.init('Ronn');
       timer.init(server, user, window.referenceOffset);
       comments.init(server, user, timer, window.programTitle);
+
+      // Turn off loading overlay
     }
   }, 2000);
 }

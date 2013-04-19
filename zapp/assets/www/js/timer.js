@@ -15,7 +15,7 @@ var timer = {
     self.server = newServer;
     self.user = newUser;
     self.time = Math.floor(startTime / 5) * 5;
-    self.intervalTimer = setInterval(_.bind(self.timer, self), 5000);
+    self.intervalTimer = setInterval(_.bind(self.timer, self), 1000);
   },
   timer: function () {
     var self = this;

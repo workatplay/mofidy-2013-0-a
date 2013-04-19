@@ -1,5 +1,3 @@
-serverUrl = "http://localhost:8888/zappserve/index.php?r=";
-
 ready = false;
 
 window.result = function(callback) {
@@ -13,8 +11,6 @@ var resultObject;
 var contentId = "5a7780f2-a676-11e2-ae21-22000af492d5";
 var programTitle = "Dragons' Den Season 7, Episode 12";
 var referenceOffset = 0;
-
-var seconds = '0';
 
 function onDeviceReady() {
   ready = true;
@@ -37,14 +33,13 @@ function onDeviceReady() {
 
     timer.init(window.referenceOffset);
     comments.init(timer, window.programTitle);
-
-    window.seconds = referenceOffset.toString();
   });
 
   setTimeout(function() {
     if (!myShowIsSet) {
       $('#myshow').text(programTitle);
-      comments.init();
+      timer.init(window.referenceOffset);
+      comments.init(timer, window.programTitle);
     }
   }, 2000);
 }
@@ -58,7 +53,3 @@ window.onload = function () {
 
 // If PhoneGap, run when ready.
 document.addEventListener('deviceready', onDeviceReady, false);
-
-setInterval(function() {
-  seconds = (parseInt(seconds, 10) + 5).toString();
-}, 5000);

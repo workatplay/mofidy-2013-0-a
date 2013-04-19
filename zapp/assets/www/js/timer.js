@@ -5,7 +5,7 @@ var timer = {
   init: function (startTime) {
     var self = this;
 
-    if (intervalTimer) {
+    if (self.intervalTimer) {
     	clearInterval(self.intervalTimer);
     }
 

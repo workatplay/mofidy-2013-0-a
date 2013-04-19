@@ -17,9 +17,7 @@ $cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);
   </div>
 </div>
 
-<div id="playerhud" style="display:none;">
-  <<<
-</div>
+<div id="playerhud" style="display:none;">Rewind</div>
 
 <video width="100%" height="100%" controls>
   <source src="<?php print $base ?>/shows/DragonsDenS7E12.mp4" type="video/mp4">
@@ -28,4 +26,7 @@ $cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);
 
 <div id="comment-template" class="comment" style="display: none;">
   <span class="msg"></span>
+  <span class="dot dot-a"></span>
+  <span class="dot dot-b"></span>
+  <span class="dot dot-c"></span>
 </div>

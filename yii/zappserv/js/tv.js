@@ -113,9 +113,9 @@ $(document).ready(function() {
           if (data.command == 'goTo') {
             filterUser = app.user;
             $player[0].currentTime = data.data.time;
-            var $playerHud = $('#playerhud').addClass('rewind').show();
+            var $playerHud = $('#playerhud').addClass('rewind');
             setTimeout(function () {
-              $playerHud.fadeOut();
+              $playerHud.removeClass('rewind');
             }, 2000);
           }
         }

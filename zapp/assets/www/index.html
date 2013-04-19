@@ -16,10 +16,12 @@
 
       <section data-role="page" id="feed">
         <header class="ui-bar" data-role="header">
-          <h1>ZappIt! Dragon's Den</h1>
+          <a style="display: none"></a>
+          <h1>Dragon's Den: ZappIt!</h1>
           <a href="#" data-icon="gear">Settings</a>
         </header>
-        <div class="ui-body" data-role="content">
+        <div class="ui-body" data-theme="a" data-role="content">
+          <img src="img/logo.jpg" style="width: 60%; display: block; height: auto; margin: 2em auto;" />
           <h2 id="myshow">Loading Episode...</h2>
           <h4>Show Zapps for this episode from:</h4>
           <fieldset class="feed-selector">
@@ -46,12 +48,12 @@
           </fieldset>
           <br>
           <div class="ui-grid-solo">
-            <div class="ui-block-a"><a href="#add" data-role="button" data-transition="slideup" data-iconpos="top" data-icon="add" data-theme="b" id="trigger-add">Tap to Zap!</a></div>
+            <div class="ui-block-a"><a href="#add" data-role="button" data-transition="slideup" data-iconpos="top" data-icon="edit" data-theme="e" id="trigger-add">Tap to Zap!</a></div>
           </div>
         </div>
       </section>
 
-      <section data-role="page" id="add">
+      <section data-role="page" id="add" data-theme="d">
         <header class="ui-bar" data-role="header">
           <a href="#feed" data-role="button" data-mini="true" data-icon="arrow-l" data-theme="a">Back</a>
           <h1>Add Your Zapp...</h1>
@@ -74,7 +76,7 @@
         </div>
       </section>
 
-      <section data-role="page" id="placement">
+      <section data-role="page" id="placement" data-theme="d">
         <header class="ui-bar" data-role="header">
           <a href="#add" data-role="button" data-mini="true" data-icon="arrow-l" data-theme="a">Back</a>
           <h1>Place Your Zapp...</h1>
@@ -85,7 +87,7 @@
             <a href="dialog.html" data-transition="none" data-rel="dialog" class="placement" id="place-top-left"></a>
             <a href="dialog.html" data-transition="none" data-rel="dialog" class="placement" id="place-top-right"></a>
             <a href="dialog.html" data-transition="none" data-rel="dialog" class="placement" id="place-bottom"></a>
-            <img src="http://placehold.it/1280x720" class="backplate" />
+            <img src="img/head.jpg" class="backplate" />
           </div>
         </div>
       </section>

@@ -32,11 +32,15 @@ $(document).ready(function() {
     if (!comment.data || !comment.data.msg) {
       return;
     }
+    var $container = $('#comments');
     var $comment = $('#comment-template').clone();
     $comment.removeAttr('id', '');
+<<<<<<< HEAD
     $comment.addClass('bubble '+comment.data.position);
+=======
+>>>>>>> nest comments
     $comment.find('.msg').html(comment.data.msg);
-    $comment.appendTo($('#comments'));
+    $comment.appendTo($container.find('.'+comment.data.position));
     $comment.fadeIn();
       
     setTimeout(function () {

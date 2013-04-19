@@ -1,10 +1,23 @@
 /* General */
+#wrapper-main {
+  opacity: 1;
+  overflow-x: visible;
+  -webkit-transition: opacity 0.5s;
+     -moz-transition: opacity 0.5s;
+      -ms-transition: opacity 0.5s;
+          transition: opacity 0.5s;
+}
 #wrapper-main header .ui-btn {
   margin: 7px;
 }
 #wrapper-main > section > div > h2,
 #wrapper-main > section > div > h4 {
   text-align: center;
+}
+
+/* Loading State */
+body.loading #wrapper-main {
+  opacity: 0;
 }
 
 /* Placement */

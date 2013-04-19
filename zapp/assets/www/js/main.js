@@ -39,7 +39,7 @@ function onDeviceReady() {
     timer.init(server, user, window.referenceOffset);
     comments.init(server, user, timer, window.programTitle);
 
-    // Turn off loading overlay
+    $('body').removeClass('loading');
   });
 
   setTimeout(function() {
@@ -51,7 +51,7 @@ function onDeviceReady() {
       timer.init(server, user, window.referenceOffset);
       comments.init(server, user, timer, window.programTitle);
 
-      // Turn off loading overlay
+      $('body').removeClass('loading');
     }
   }, 2000);
 }

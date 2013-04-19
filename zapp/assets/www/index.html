@@ -8,19 +8,19 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="jquery.mobile/jquery.mobile.themed.css" />
 
-    <title>Dragon's Den</title>
+    <title>ZappIt!</title>
   </head>
-  <body>
+  <body class="loading">
 
     <div class="ui-mobile-viewport" id="wrapper-main">
 
       <section data-role="page" id="feed">
         <header class="ui-bar" data-role="header">
-          <h1>ZappIt: Dragon's Den</h1>
+          <h1>ZappIt! Dragon's Den</h1>
         </header>
         <div class="ui-body" data-role="content">
           <h2 id="myshow">Loading Episode...</h2>
-          <h4>Select a feed of Zapps for this episode:</h4>
+          <h4>Show Zapps for this episode from:</h4>
           <fieldset class="feed-selector">
             <div class="ui-grid-a">
               <div class="ui-block-a">
@@ -53,14 +53,14 @@
       <section data-role="page" id="add">
         <header class="ui-bar" data-role="header">
           <a href="#" data-role="button" data-rel="back" data-mini="true" data-icon="arrow-l" data-theme="a">Back</a>
-          <h1>Add Your Zapp</h1>
+          <h1>Add a Zapp</h1>
         </header>
         <div class="ui-body" data-role="content">
           <form>
             <textarea cols="40" rows="20" name="message" id="message" placeholder="Add your bubble..."></textarea>
             <div class="ui-grid-b">
               <div class="ui-block-a">
-                <label><input type="checkbox" checked="checked" data-mini="true" name="tweet">Send to Twitter</label>
+                <label><input type="checkbox" checked="checked" name="tweet">Send to Twitter</label>
               </div>
               <div class="ui-block-b">&nbsp;</div>
               <div class="ui-block-c" style="white-space: nowrap; text-align: right">

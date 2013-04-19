@@ -41,7 +41,7 @@ $(document).ready(function() {
       
     setTimeout(function () {
       $comment.slideUp();
-    }, 5000);
+    }, 10000);
     
     console.log('$comment', comment, $comment);
   };

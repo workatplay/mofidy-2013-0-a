@@ -11,9 +11,6 @@ var comments = {
     var self = this;
 
     _.each(comments, function (comment) {
-      comment.id = parseInt(comment.id);
-      comment.time = parseInt(comment.time);
-
       self.comments.push(comment);
 
       if (comment.id > self.maxId) {
@@ -21,17 +18,23 @@ var comments = {
       }
     });
   },
-  sendComment: function (msg, position) {
+  sendComment: function (msg, position, time) {
     var self = this;
+
+    if (!time) {
+      time = self.timer.time;
+    }
+
     var comment = {
       user: self.userName,
       data: {
         msg: msg,
         position: position
       },
-      time: self.timer.time,
+      time: time,
       video: self.showTitle
     };
+console.log(comment);
 
     $.ajax({
       type: 'post',
@@ -39,7 +42,7 @@ var comments = {
       url: self.serverUrl + '?r=site/commentSave',
       data: comment,
       success: function (data) {
-        self.addComment([data]);
+        self.addComments([data]);
       }    
     });
   },
@@ -66,12 +69,12 @@ var comments = {
 
     $.ajax({
       dataType: "json",
-      url: self.serverUrl + '&video=' + self.showTitle + '&lastId=' + self.maxId + '&startTime=' + self.showTime,
+      url: self.serverUrl,
       data: {
         r: 'site/commentList',
         video: self.showTitle,
         lastId: self.maxId,
-        startTime: self.showTime
+        startTime: self.timer.time
       },
 
       success: function (data) {

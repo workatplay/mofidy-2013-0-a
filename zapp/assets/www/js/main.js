@@ -57,7 +57,26 @@ window.onload = function () {
 // If PhoneGap, run when ready.
 document.addEventListener('deviceready', onDeviceReady, false);
 
+$('#trigger-add').click(function () {
+  window.commentData['time'] = timer.time;
+});
+
 $('#trigger-placement').click(function () {
   window.commentData['message'] = $('textarea[name=message]').val();
-  console.log(window.commentData);
+});
+
+$('.placement').click(function () {
+  var self = this;
+
+  if (self.id === 'place-top-left') {
+    window.commentData['position'] = 'top-left';
+  }
+  else if (self.id === 'place-top-right') {
+    window.commentData['position'] = 'top-right';
+  }
+  else if (self.id === 'place-bottom') {
+    window.commentData['position'] = 'bottom';
+  }
+
+  comments.sendComment(commentData['message'], commentData['position'], commentData['time']);
 });

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2013 at 04:34 PM
+-- Generation Time: Apr 18, 2013 at 07:34 PM
 -- Server version: 5.5.9
 -- PHP Version: 5.3.6
 
@@ -12,6 +12,23 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `zapp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `commands`
+--
+
+DROP TABLE IF EXISTS `commands`;
+CREATE TABLE `commands` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data` longtext,
+  `created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `user` varchar(16) NOT NULL,
+  `command` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user` (`user`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

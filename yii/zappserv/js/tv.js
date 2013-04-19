@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  
+  
   var curVideoTime = 0;
   var intervalDur = 1;
   var lastId = 0;
@@ -6,8 +8,7 @@ $(document).ready(function() {
  
   var getComments = function () {
     $.ajax({
-//      url: app.basePath,
-      url: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv',
+      url: app.server,
       data: {
         rand: Math.random(),
         r: 'site/commentList',
@@ -27,45 +28,21 @@ $(document).ready(function() {
     });
   };
   
-//  $.ajax({
-//    type: 'post',
-//    dataType: "json",
-////    url: app.basePath+'/index.php?r=site/commentSave',
-//    url: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php?r=site/commentSave',
-//    data: {
-//      user: 'ronn',
-//      data: {
-//        message: 'hi',
-//        position: 'bottom'
-//      },
-//      time: 30, // in s
-//      video: 'den_s7e1' // unique identifier for show/episode
-//    },
-//    success: function (data) {
-//      console.log('data', data);
-//    }    
-//  });
-//  $.ajax({
-//    dataType: "json",
-//    url: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php?r=site/commentList&video=&lastId=0&startTime=0',
-//    success: function (data) {
-//      console.log('ajax', data);
-//    }    
-//  });
-  
   var showComment = function (comment) {
-    if (!comment.data) {
+    if (!comment.data || !comment.data.msg) {
       return;
     }
-    console.log('showComment', comment);
     var $comment = $('#comment-template').clone();
-    $comment.attr('id', '');
+    $comment.removeAttr('id', '');
+    $comment.addClass(comment.position);
     $comment.find('.msg').html(comment.data.msg);
-    $comment.appendTo($('.comments'));
-//    $('<div>')
-//    .addClass('comment')
-//    .addClass(comment.position)
-//    .
+    $comment.appendTo($('#comments'));
+    
+    setTimeout(function () {
+      $comment.remove();
+    }, 5000);
+    
+    console.log('$comment', $comment);
   };
   var showComments = function () {
     var putBack = [];

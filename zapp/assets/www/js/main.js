@@ -70,6 +70,11 @@ $('#trigger-add').click(function () {
   window.commentData['time'] = timer.time;
 });
 
+$('#add-cancel').click(function () {
+  window.commentData = {};
+  $('textarea[name=message]').val('');
+});
+
 $('#trigger-placement').click(function () {
   window.commentData['message'] = $('textarea[name=message]').val();
   $('textarea[name=message]').val('');

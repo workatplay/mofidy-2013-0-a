@@ -34,7 +34,7 @@ $(document).ready(function() {
     }
     var $comment = $('#comment-template').clone();
     $comment.removeAttr('id', '');
-    $comment.addClass(comment.data.position);
+    $comment.addClass('bubble '+comment.data.position);
     $comment.find('.msg').html(comment.data.msg);
     $comment.appendTo($('#comments'));
     $comment.fadeIn();

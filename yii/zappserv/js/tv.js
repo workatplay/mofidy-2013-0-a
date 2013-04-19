@@ -40,7 +40,7 @@ $(document).ready(function() {
     $comment.fadeIn();
       
     setTimeout(function () {
-//      $comment.remove();
+      $comment.fadeOut();
     }, 5000);
     
     console.log('$comment', comment, $comment);

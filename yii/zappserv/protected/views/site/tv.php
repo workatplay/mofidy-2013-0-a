@@ -9,11 +9,11 @@ $cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);
 </div>
 
 <div id="comments">
-  <div class="top-left">
+  <div class="region top-left">
   </div>
-  <div class="top-right">
+  <div class="region top-right">
   </div>
-  <div class="bottom">
+  <div class="region bottom">
   </div>
 </div>
 

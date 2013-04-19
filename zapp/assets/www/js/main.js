@@ -82,5 +82,42 @@ $('.placement').click(function () {
 });
 
 $('.feed-selector').on('change', 'input', function (e) {
+  var self = this;
+
+  if ($(self).val() === 'on') {
+    var command = null;
+    var data = null;
+
+    if (self.id === 'feed-dd') {
+      command = 'changeFeed';
+      data = {user: 'Official'};
+    }
+    else if (self.id === 'feed-me') {
+      command = 'changeFeed';
+      data = {user: 'Ronn'};
+    }
+    else if (self.id === 'feed-friends') {
+      command = 'changeFeed';
+      data = {user: 'Friends'};
+    }
+
+    if (command) {
+      $.ajax({
+        type: 'post',
+        dataType: "json",
+        url: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php?r=site/commandSend',
+        data: {
+          user: 'Ronn',
+          command: command,
+          data: data
+        },
+        success: function (data) {
+          console.log('success');
+        }    
+      });
+    }
+  }
+  console.log(self.id);
+  console.log($(self).val());
   // todo: send command via ajax
 });

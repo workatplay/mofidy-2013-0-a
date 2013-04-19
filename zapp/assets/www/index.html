@@ -16,13 +16,11 @@
 
       <section data-role="page" id="feed">
         <header class="ui-bar" data-role="header">
-          <h1>ZappTV: Dragon's Den</h1>
-          <!--a href="#" data-role="button" data-mini="true" data-inline="true" data-icon="back" data-theme="b">Restart</a-->
+          <h1>ZappIt: Dragon's Den</h1>
         </header>
         <div class="ui-body" data-role="content">
-          <h2 id="myshow">(working)</h2>
-          <h3>Choose a feed of Zapps...</h3>
-          
+          <h2 id="myshow">Loading Episode...</h2>
+          <h4>Select a feed of Zapps for this episode:</h4>
           <fieldset class="feed-selector">
             <div class="ui-grid-a">
               <div class="ui-block-a">
@@ -53,15 +51,19 @@
       </section>
 
       <section data-role="page" id="add">
+        <header class="ui-bar" data-role="header">
+          <a href="#" data-role="button" data-rel="back" data-mini="true" data-icon="arrow-l" data-theme="a">Back</a>
+          <h1>Add Your Zapp</h1>
+        </header>
         <div class="ui-body" data-role="content">
           <form>
-            <label for="message">Add your bubble: </label>
-            <textarea cols="40" rows="12" name="message" id="message"></textarea>
-            <div class="ui-grid-a">
+            <textarea cols="40" rows="20" name="message" id="message" placeholder="Add your bubble..."></textarea>
+            <div class="ui-grid-b">
               <div class="ui-block-a">
-                <label><input type="checkbox" checked="checked" data-inline="true" name="tweet">Send to Twitter</label>
+                <label><input type="checkbox" checked="checked" data-mini="true" name="tweet">Send to Twitter</label>
               </div>
-              <div class="ui-block-b" style="white-space: nowrap; text-align: right">
+              <div class="ui-block-b">&nbsp;</div>
+              <div class="ui-block-c" style="white-space: nowrap; text-align: right">
                 <a href="#feed" data-transition="slidedown" data-role="button" data-inline="true">Cancel</a>
                 <a href="#placement" data-transition="slide" id="trigger-placement" data-role="button" data-inline="true" data-iconpos="right" data-icon="arrow-r" data-theme="b">Next</a>
               </div>
@@ -71,11 +73,15 @@
       </section>
 
       <section data-role="page" id="placement">
+        <header class="ui-bar" data-role="header">
+          <a href="#" data-rel="back" data-role="button" data-mini="true" data-icon="arrow-l" data-theme="a">Back</a>
+          <h1>Place Your Zapp</h1>
+        </header>
         <div class="ui-body" data-role="content">
           <div id="placement-chooser">
-            <a href="#feed" data-transition="fade" class="placement" id="place-top-left"></a>
-            <a href="#feed" data-transition="fade" class="placement" id="place-top-right"></a>
-            <a href="#feed" data-transition="fade" class="placement" id="place-bottom"></a>
+            <a href="#add" data-transition="fade" class="placement" id="place-top-left"></a>
+            <a href="#add" data-transition="fade" class="placement" id="place-top-right"></a>
+            <a href="#add" data-transition="fade" class="placement" id="place-bottom"></a>
             <img src="http://placehold.it/1280x720" class="backplate" />
           </div>
         </div>

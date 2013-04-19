@@ -1,7 +1,13 @@
+/* General */
+#wrapper-main header .ui-btn {
+  margin: 7px;
+}
 #wrapper-main > section > div > h2,
-#wrapper-main > section > div > h3 {
+#wrapper-main > section > div > h4 {
   text-align: center;
 }
+
+/* Placement */
 #placement-chooser {
   position: relative;
   width: 100%;
@@ -11,26 +17,33 @@
   font: 0/0 a;
   color: transparent;
   text-shadow: none;
+  opacity: 0;
 }
 #placement-chooser .placement:hover {
-  background: rgba(255,255,0, 0.25);
+  opacity: 1;
 }
 #placement-chooser .placement#place-top-left {
+  background: url('graphics/placement_corner-left.png') no-repeat 0 0;
+  background-size: 70%;
   width: 50%;
-  height: 70%;
+  height: 65%;
   left: 0;
-  top: 0;
+  top: -10%;
 }
 #placement-chooser .placement#place-top-right {
+  background: url('graphics/placement_corner-right.png') no-repeat 100% 0;
+  background-size: 70%;
   width: 50%;
-  height: 70%;
+  height: 65%;
   right: 0;
-  top: 0;
+  top: -10%;
 }
 #placement-chooser .placement#place-bottom {
-  height: 30%;
+  background: url('graphics/placement_bottom.png') no-repeat 50% 0;
+  background-size: 99%;
+  height: 35%;
   width: 100%;
-  bottom: 0;
+  bottom: 12px;
 }
 #placement-chooser img.backplate {
   width: 100%;

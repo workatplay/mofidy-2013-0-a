@@ -17,6 +17,7 @@
     
 		<script>
       var app = {
+        user: 'Ronn',
         server: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php',
         basePath: '<?php echo Yii::app()->request->baseUrl; ?>'
       };

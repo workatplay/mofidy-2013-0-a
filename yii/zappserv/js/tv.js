@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  
   var curVideoTime = 0;
   var intervalDur = 1;
   var lastId = 0;
@@ -58,6 +57,20 @@ $(document).ready(function() {
     }
     comments = putBack.slice(0);
   };
+  var saveCurrentTime = function () {
+    $.ajax({
+      type: 'post',
+      url: app.server,
+      data: {
+        r: 'site/variableSend',
+        name: 'currentTime.'+app.user,
+        data: curVideoTime 
+      },
+      success: function (data) {
+        console.log(curVideoTime, data);
+      }
+    });    
+  };
   
   var interval;
   $player.on('play', function() {
@@ -65,9 +78,11 @@ $(document).ready(function() {
     clearInterval(interval);
     
     interval = setInterval(function () {
+      curVideoTime = video.currentTime;
+      
       getComments();
       showComments();
-      curVideoTime = video.currentTime;
+      saveCurrentTime();
     }, intervalDur*1000);
   })
 });

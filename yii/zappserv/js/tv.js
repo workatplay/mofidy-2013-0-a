@@ -6,11 +6,12 @@ $(document).ready(function() {
  
   var getComments = function () {
     $.ajax({
-      url: app.basePath,
-//      url: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv',
+//      url: app.basePath,
+      url: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv',
       data: {
+        rand: Math.random(),
         r: 'site/commentList',
-        video: '',
+//        video: "",
         lastId: lastId
       },
       success: function (data) {
@@ -26,24 +27,24 @@ $(document).ready(function() {
     });
   };
   
-  $.ajax({
-    type: 'post',
-    dataType: "json",
-    url: app.basePath+'/index.php?r=site/commentSave',
+//  $.ajax({
+//    type: 'post',
+//    dataType: "json",
+////    url: app.basePath+'/index.php?r=site/commentSave',
 //    url: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php?r=site/commentSave',
-    data: {
-      user: 'ronn',
-      data: {
-        message: 'hi',
-        position: 'bottom'
-      },
-      time: 30, // in s
-      video: 'den_s7e1' // unique identifier for show/episode
-    },
-    success: function (data) {
-      console.log('data', data);
-    }    
-  });
+//    data: {
+//      user: 'ronn',
+//      data: {
+//        message: 'hi',
+//        position: 'bottom'
+//      },
+//      time: 30, // in s
+//      video: 'den_s7e1' // unique identifier for show/episode
+//    },
+//    success: function (data) {
+//      console.log('data', data);
+//    }    
+//  });
 //  $.ajax({
 //    dataType: "json",
 //    url: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php?r=site/commentList&video=&lastId=0&startTime=0',
@@ -53,8 +54,14 @@ $(document).ready(function() {
 //  });
   
   var showComment = function (comment) {
+    if (!comment.data) {
+      return;
+    }
     console.log('showComment', comment);
-    
+    var $comment = $('#comment-template').clone();
+    $comment.attr('id', '');
+    $comment.find('.msg').html(comment.data.msg);
+    $comment.appendTo($('.comments'));
 //    $('<div>')
 //    .addClass('comment')
 //    .addClass(comment.position)

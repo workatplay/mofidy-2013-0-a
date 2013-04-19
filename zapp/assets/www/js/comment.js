@@ -34,7 +34,6 @@ var comments = {
       time: time,
       video: self.showTitle
     };
-console.log(comment);
 
     $.ajax({
       type: 'post',

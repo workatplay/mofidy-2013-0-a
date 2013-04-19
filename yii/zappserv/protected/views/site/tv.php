@@ -17,6 +17,10 @@ $cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);
   </div>
 </div>
 
+<div id="playerhud" style="display:none;">
+  <<<
+</div>
+
 <video width="100%" height="100%" controls>
   <source src="<?php print $base ?>/shows/DragonsDenS7E12.mp4" type="video/mp4">
   Your browser does not support the video tag.

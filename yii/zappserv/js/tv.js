@@ -113,6 +113,10 @@ $(document).ready(function() {
           if (data.command == 'goTo') {
             filterUser = app.user;
             $player[0].currentTime = data.data.time;
+            var $playerHud = $('#playerhud').addClass('rewind').show();
+            setTimeout(function () {
+              $playerHud.fadeOut();
+            }, 2000);
           }
         }
       }

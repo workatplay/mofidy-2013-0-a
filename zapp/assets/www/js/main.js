@@ -34,18 +34,20 @@ function onDeviceReady() {
       }
     });
 
+    server.init('http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php');
     user.init('Ronn');
     timer.init(window.referenceOffset);
-    comments.init(user, timer, window.programTitle);
+    comments.init(server, user, timer, window.programTitle);
   });
 
   setTimeout(function() {
     if (!myShowIsSet) {
       $('#myshow').text(programTitle);
 
+      server.init('http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php');
       user.init('Ronn');
       timer.init(window.referenceOffset);
-      comments.init(user, timer, window.programTitle);
+      comments.init(server, user, timer, window.programTitle);
     }
   }, 2000);
 }
@@ -105,22 +107,9 @@ $('.feed-selector').on('change', 'input', function (e) {
     }
 
     if (command) {
-      $.ajax({
-        type: 'post',
-        dataType: "json",
-        url: 'http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php?r=site/commandSend',
-        data: {
-          user: window.user.name,
-          command: command,
-          data: data
-        },
-        success: function (data) {
-          console.log('success');
-        }    
+      window.server.post('site/commandSend', {user: window.user.name, command: command, data: data}, function (data) {
+        console.log('success');
       });
     }
   }
-  console.log(self.id);
-  console.log($(self).val());
-  // todo: send command via ajax
 });

@@ -1,5 +1,5 @@
 var comments = {
-  serverUrl: "http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php",
+  server: null,
   user: null,
   timer: null,
   showTitle: '',
@@ -35,23 +35,18 @@ var comments = {
       video: self.showTitle
     };
 
-    $.ajax({
-      type: 'post',
-      dataType: "json",
-      url: self.serverUrl + '?r=site/commentSave',
-      data: comment,
-      success: function (data) {
-        self.addComments([data]);
-      }    
+    self.server.post('site/commentSave', comment, function (data) {
+      self.addComments([data]);
     });
   },
-  init: function (newUser, newTimer, newShowTitle) {
+  init: function (newServer, newUser, newTimer, newShowTitle) {
     var self = this;
 
     if (self.intervalTimer) {
       clearInterval(self.intervalTimer);
     }
 
+    self.server = newServer;
     self.user = newUser;
     self.timer = newTimer;
     self.showTitle = newShowTitle;
@@ -64,20 +59,14 @@ var comments = {
   },
   poll: function () {
     var self = this;
+    var query = {
+      video: self.showTitle,
+      lastId: self.maxId,
+      startTime: self.timer.time
+    };
 
-    $.ajax({
-      dataType: "json",
-      url: self.serverUrl,
-      data: {
-        r: 'site/commentList',
-        video: self.showTitle,
-        lastId: self.maxId,
-        startTime: self.timer.time
-      },
-
-      success: function (data) {
-        self.addComments(data);
-      }
+    self.server.get('site/commentList', query, function (data) {
+      self.addComments(data);
     });
   }
 };

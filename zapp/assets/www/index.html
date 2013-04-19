@@ -16,18 +16,39 @@
 
       <section data-role="page" id="feed">
         <header class="ui-bar" data-role="header">
-          <h3>You are watching: <span id="myshow">Loading...</span></h3>
-          <a href="#" data-role="button" data-mini="true" data-inline="true" data-icon="back" data-theme="b">Restart</a>
+          <h1>ZappTV: Dragon's Den</h1>
+          <!--a href="#" data-role="button" data-mini="true" data-inline="true" data-icon="back" data-theme="b">Restart</a-->
         </header>
         <div class="ui-body" data-role="content">
-          <h2>Choose a feed of Zapps...</h2>
-          <div data-role="controlgroup">
-            <a href="#" data-role="button">Dragon's Den</a>
-            <a href="#" data-role="button">My Zapps</a>
-            <a href="#" data-role="button">My Friends</a>
-            <a href="#" data-role="button">Popular</a>
+          <h2 id="myshow">(working)</h2>
+          <h3>Choose a feed of Zapps...</h3>
+          
+          <fieldset>
+            <div class="ui-grid-a">
+              <div class="ui-block-a">
+                <input type="radio" name="feed-select" id="feed-dd" value="on">
+                <label for="feed-dd">Dragon's Den</label>
+              </div>
+              <div class="ui-block-b">
+                <input type="radio" name="feed-select" id="feed-me" value="on">
+                <label for="feed-me">Me</label>
+              </div>
+            </div>
+            <div class="ui-grid-a">
+              <div class="ui-block-a">
+                <input type="radio" name="feed-select" id="feed-friends" value="on">
+                <label for="feed-friends">Friends</label>
+              </div>
+              <div class="ui-block-b">
+                <input type="radio" name="feed-select" id="feed-popular" value="on">
+                <label for="feed-popular">Popular</label>
+              </div>
+            </div>
+          </fieldset>
+          <br>
+          <div class="ui-grid-solo">
+            <div class="ui-block-a"><a href="#add" data-role="button" data-transition="slideup" data-iconpos="top" data-icon="add" data-theme="b">Start Zapping!</a></div>
           </div>
-          <a href="#add" data-role="button" data-transition="slideup" data-iconpos="bottom" data-icon="add" data-theme="b">Add a new Zapp</a>
         </div>
       </section>
 
@@ -36,13 +57,16 @@
           <form>
             <label for="message">Add your bubble: </label>
             <textarea cols="40" rows="12" name="message" id="message"></textarea>
-            <label for="tweet">Sent to Twitter: </label>
-            <select name="tweet" id="tweet" data-role="slider">
-              <option value="off">Off</option>
-              <option value="on">On</option>
-            </select>
+            <div class="ui-grid-a">
+              <div class="ui-block-a">
+                <label><input type="checkbox" checked="checked" data-inline="true" name="tweet">Send to Twitter</label>
+              </div>
+              <div class="ui-block-b" style="white-space: nowrap; text-align: right">
+                <a href="#feed" data-transition="slidedown" data-role="button" data-inline="true">Cancel</a>
+                <a href="#placement" data-transition="slide" id="trigger-placement" data-role="button" data-inline="true" data-iconpos="right" data-icon="arrow-r" data-theme="b">Next</a>
+              </div>
+            </div>
           </form>
-          <a href="#placement" data-transition="slide" id="trigger-placement" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">Next</a>
         </div>
       </section>
 

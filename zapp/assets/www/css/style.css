@@ -1,3 +1,7 @@
+#wrapper-main > section > div > h2,
+#wrapper-main > section > div > h3 {
+  text-align: center;
+}
 #placement-chooser {
   position: relative;
   width: 100%;

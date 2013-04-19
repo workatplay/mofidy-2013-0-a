@@ -1,6 +1,5 @@
 $(document).ready(function() {
   
-  
   var curVideoTime = 0;
   var intervalDur = 1;
   var lastId = 0;
@@ -16,7 +15,7 @@ $(document).ready(function() {
         lastId: lastId
       },
       success: function (data) {
-        console.log('data', data);
+        console.log(curVideoTime, data);
         
         $.each(data, function(i, comment) {
           comments.push(comment);

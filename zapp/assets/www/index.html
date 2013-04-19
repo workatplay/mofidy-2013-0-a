@@ -17,79 +17,41 @@
       <section data-role="page" id="feed">
         <header class="ui-bar" data-role="header">
           <h3>You are watching: <span id="myshow">Loading...</span></h3>
-          <form>
-            <input type="range" name="timeline" id="timeline" data-highlight="true" min="0" max="100" value="50">
-          </form>
-          <ul data-role="controlgroup" data-type="horizontal" class="localnav ui-corner-all ui-controlgroup ui-controlgroup-horizontal">
-            <div class="ui-controlgroup-controls">
-              <li class="ui-checkbox"><a href="#" data-role="button" data-transition="fade" class="ui-btn ui-corner-left ui-btn-up-c" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"><span class="ui-btn-inner ui-corner-left"><span class="ui-btn-text">Restart</span></span></a></li>
-              <li class="ui-checkbox"><a href="#" data-role="button" data-transition="fade" class="ui-btn ui-btn-up-c" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"><span class="ui-btn-inner"><span class="ui-btn-text">Play/Pause</span></span></a></li>
-            </div>
-          </ul>
+          <a href="#" data-role="button" data-mini="true" data-inline="true" data-icon="back" data-theme="b">Restart</a>
         </header>
         <div class="ui-body" data-role="content">
-          <article id="id" class="ugc entry">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc purus magna, ullamcorper ut pellentesque in, venenatis in purus. Nunc eget lacus metus.</p>
-            <ul class="utils">
-              <li class="timestamp">88:88</li>
-              <li class="user">Username</li>
-              <li class="like">Like</li>
-            </ul>
-          </article>
-          <article id="id" class="ugc entry">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc purus magna, ullamcorper ut pellentesque in, venenatis in purus. Nunc eget lacus metus.</p>
-            <ul class="utils">
-              <li class="timestamp">88:88</li>
-              <li class="user">Username</li>
-              <li class="like">Like</li>
-            </ul>
-          </article>
-          <article id="id" class="official entry">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc purus magna, ullamcorper ut pellentesque in, venenatis in purus. Nunc eget lacus metus.</p>
-            <ul class="utils">
-              <li class="timestamp">88:88</li>
-              <li class="user">Username</li>
-              <li class="like">Like</li>
-            </ul>
-          </article>
-          <article id="id" class="ugc entry">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc purus magna, ullamcorper ut pellentesque in, venenatis in purus. Nunc eget lacus metus.</p>
-            <ul class="utils">
-              <li class="timestamp">88:88</li>
-              <li class="user">Username</li>
-              <li class="like">Like</li>
-            </ul>
-          </article>
+          <h2>Choose a feed of Zapps...</h2>
+          <div data-role="controlgroup">
+            <a href="#" data-role="button">Dragon's Den</a>
+            <a href="#" data-role="button">My Zapps</a>
+            <a href="#" data-role="button">My Friends</a>
+            <a href="#" data-role="button">Popular</a>
+          </div>
+          <a href="#add" data-role="button" data-transition="slideup" data-iconpos="bottom" data-icon="add" data-theme="b">Add a new Zapp</a>
         </div>
-        <footer class="ui-bar" data-role="footer" data-position="fixed">
-          <a href="#add" id="trigger-add">Add</a>
-        </footer>
       </section>
 
       <section data-role="page" id="add">
-        <header class="ui-bar" data-role="header" data-position="fixed">
-          <h3>You are watching: <span>Dragon's Den Something Something</span></h3>
-        </header>
         <div class="ui-body" data-role="content">
           <form>
-            <label for="message">Add your bubble:</label>
-            <textarea cols="40" rows="8" name="message" id="textarea"></textarea>
+            <label for="message">Add your bubble: </label>
+            <textarea cols="40" rows="12" name="message" id="message"></textarea>
+            <label for="tweet">Sent to Twitter: </label>
+            <select name="tweet" id="tweet" data-role="slider">
+              <option value="off">Off</option>
+              <option value="on">On</option>
+            </select>
           </form>
+          <a href="#placement" data-transition="slide" id="trigger-placement" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">Next</a>
         </div>
-        <footer class="ui-bar" data-role="footer" data-position="fixed">
-          <a href="#placement" id="trigger-placement">Next</a>
-        </footer>
       </section>
 
       <section data-role="page" id="placement">
-        <header class="ui-bar" data-role="header" data-position="fixed">
-          <h3>You are watching: <span>Dragon's Den Something Something</span></h3>
-        </header>
         <div class="ui-body" data-role="content">
           <div id="placement-chooser">
-            <a href="#feed" class="placement" id="place-top-left"></a>
-            <a href="#feed" class="placement" id="place-top-right"></a>
-            <a href="#feed" class="placement" id="place-bottom"></a>
+            <a href="#feed" data-transition="fade" class="placement" id="place-top-left"></a>
+            <a href="#feed" data-transition="fade" class="placement" id="place-top-right"></a>
+            <a href="#feed" data-transition="fade" class="placement" id="place-bottom"></a>
             <img src="http://placehold.it/1280x720" class="backplate" />
           </div>
         </div>

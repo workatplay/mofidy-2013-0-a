@@ -36,7 +36,7 @@ function onDeviceReady() {
 
     server.init('http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php');
     user.init('Ronn');
-    timer.init(window.referenceOffset);
+    timer.init(server, user, window.referenceOffset);
     comments.init(server, user, timer, window.programTitle);
   });
 
@@ -46,7 +46,7 @@ function onDeviceReady() {
 
       server.init('http://tvhackfest.workatplay.com/zapp/yii/zappserv/index.php');
       user.init('Ronn');
-      timer.init(window.referenceOffset);
+      timer.init(server, user, window.referenceOffset);
       comments.init(server, user, timer, window.programTitle);
     }
   }, 2000);

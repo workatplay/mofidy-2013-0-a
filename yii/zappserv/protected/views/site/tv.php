@@ -4,6 +4,11 @@ $cs = Yii::app()->getClientScript();
 $cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);  
 ?>
 
+
+<div id="bubbleby">
+  Bubbles by: <span class="name"></span>
+</div>
+
 <div id="comments" class="comment" style="position: absolute; z-index: 2;">
 </div>
 

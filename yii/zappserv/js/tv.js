@@ -87,6 +87,15 @@ $(document).ready(function() {
       }
     });    
   };
+  var setBubblesBy = function () {
+    var name = filterUser;
+    if (name == 'Friends') {
+      name = 'Your friends';
+    } else if (name === false) {
+      name = 'Everyone';
+    }
+    $('#bubbleby').find('.name').html(name);
+  }
   var applyCommand = function () {
     $.ajax({
       url: app.server,
@@ -99,6 +108,7 @@ $(document).ready(function() {
           console.log('applyCommand', data);
           if (data.command == 'changeFeed') {
             filterUser = data.data.user;
+            setBubblesBy();
           }
         }
       }
@@ -110,6 +120,7 @@ $(document).ready(function() {
     var video = this;
     clearInterval(interval);
     
+    setBubblesBy();
     interval = setInterval(function () {
       curVideoTime = video.currentTime;
       

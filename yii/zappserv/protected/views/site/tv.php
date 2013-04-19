@@ -1,5 +1,9 @@
 <?php 
+$base = Yii::app()->getBaseUrl();
 $cs = Yii::app()->getClientScript();
-$cs->registerScriptFile(Yii::app()->getBaseUrl() . '/js/tv.js', CClientScript::POS_END);  
+$cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);  
 ?>
-tv here
+<video width="100%" height="100%"" controls>
+  <source src="<?php print $base ?>/shows/DragonsDenS7E12.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>

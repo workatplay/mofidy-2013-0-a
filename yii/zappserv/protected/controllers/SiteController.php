@@ -203,7 +203,7 @@ class SiteController extends Controller
    */
 	public function actionCommandRetrieve($user) {
 		$result = (object)array();
-		$command = Command::model()->find(array('condition' => 'user = :user', 'params' => array('user' => $user)));
+		$command = Command::model()->find(array('condition' => 'user = :user', 'params' => array(':user' => $user)));
 
 		if ($command) {
 	        $result = $command->getAttributes();
@@ -235,7 +235,7 @@ class SiteController extends Controller
 	public function actionCommandSend() {
 		$params = $_POST;
 
-		$command = Command::model()->find(array('condition' => 'user = :user', 'params' => array('user' => $_POST['user'])));
+		$command = Command::model()->find(array('condition' => 'user = :user', 'params' => array(':user' => $params['user'])));
 		if (!$command) {
 			$command = new Command;
 		}
@@ -248,4 +248,54 @@ class SiteController extends Controller
 		$this->renderJSON(false);
 	}
 
+  /**
+   * use: /zappserv/index.php?r=site/commentList&video=theshowep&lastId=0&startTime=0
+   * @param type $lastId
+   * @param type $startTime
+   */
+	public function actionVariableRetrieve($name) {
+		$result = (object)array();
+		$variable = Variable::model()->find(array('condition' => 'name = :name', 'params' => array(':name' => $name)));
+
+		if ($variable) {
+	        $result = $variable->getAttributes();
+		}
+
+		$this->renderJSON($result);
+	}
+
+  /**
+   * use:
+  $.ajax({
+    type: 'post',
+    dataType: "json",
+    url: '/zappserv/index.php?r=site/CommandSend',
+    data: {
+      user: 'ronn', // used to differentiate who the command is for
+      command: 'showComments',
+      data: {
+		user: 'DragonDen'
+      }
+    },
+    success: function (data) {
+      console.log('data', data);
+    }    
+  });
+   * @return type
+   */
+	public function actionVariableSend() {
+		$params = $_POST;
+
+		$variable = Variable::model()->find(array('condition' => 'name = :name', 'params' => array(':name' => $params['name'])));
+		if (!$variable) {
+			$variable = new Variable;
+		}
+
+		$variable->setAttributes($params);
+
+		if ($variable->save()) {
+			return $this->renderJSON(true);
+		}
+		$this->renderJSON(false);
+	}
 }

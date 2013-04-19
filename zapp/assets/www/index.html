@@ -45,19 +45,19 @@
           </fieldset>
           <br>
           <div class="ui-grid-solo">
-            <div class="ui-block-a"><a href="#add" data-role="button" data-transition="slideup" data-iconpos="top" data-icon="add" data-theme="b">Start Zapping!</a></div>
+            <div class="ui-block-a"><a href="#add" data-role="button" data-transition="slideup" data-iconpos="top" data-icon="add" data-theme="b">Tap to Zap!</a></div>
           </div>
         </div>
       </section>
 
       <section data-role="page" id="add">
         <header class="ui-bar" data-role="header">
-          <a href="#" data-role="button" data-rel="back" data-mini="true" data-icon="arrow-l" data-theme="a">Back</a>
-          <h1>Add a Zapp</h1>
+          <a href="#feed" data-role="button" data-mini="true" data-icon="arrow-l" data-theme="a">Back</a>
+          <h1>Add Your Zapp</h1>
         </header>
         <div class="ui-body" data-role="content">
           <form>
-            <textarea cols="40" rows="20" name="message" id="message" placeholder="Add your bubble..."></textarea>
+            <textarea cols="40" rows="20" name="message" id="message" placeholder="Add some clever text..."></textarea>
             <div class="ui-grid-b">
               <div class="ui-block-a">
                 <label><input type="checkbox" checked="checked" name="tweet">Send to Twitter</label>
@@ -74,14 +74,14 @@
 
       <section data-role="page" id="placement">
         <header class="ui-bar" data-role="header">
-          <a href="#" data-rel="back" data-role="button" data-mini="true" data-icon="arrow-l" data-theme="a">Back</a>
+          <a href="#add" data-role="button" data-mini="true" data-icon="arrow-l" data-theme="a">Back</a>
           <h1>Place Your Zapp</h1>
         </header>
         <div class="ui-body" data-role="content">
           <div id="placement-chooser">
-            <a href="#add" data-transition="fade" class="placement" id="place-top-left"></a>
-            <a href="#add" data-transition="fade" class="placement" id="place-top-right"></a>
-            <a href="#add" data-transition="fade" class="placement" id="place-bottom"></a>
+            <a href="dialog.html" data-transition="none" data-rel="dialog" class="placement" id="place-top-left"></a>
+            <a href="dialog.html" data-transition="none" data-rel="dialog" class="placement" id="place-top-right"></a>
+            <a href="dialog.html" data-transition="none" data-rel="dialog" class="placement" id="place-bottom"></a>
             <img src="http://placehold.it/1280x720" class="backplate" />
           </div>
         </div>

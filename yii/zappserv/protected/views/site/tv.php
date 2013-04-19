@@ -5,7 +5,7 @@ $cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);
 ?>
 
 <div id="bubbleby">
-  Bubbles by: <span class="name"></span>
+  Bubbles by: <strong class="name">Hang on a second...</strong>
 </div>
 
 <div id="comments">

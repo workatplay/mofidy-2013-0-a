@@ -20,3 +20,5 @@ zapp/bin/dexedLibs/cordova-2.3.0-c81d4a4986dfad0cada685097d8c9745.jar
 zapp/bin/dexedLibs/libTVSYNCApi-a6ead77844141120c7ea38d6ac93a461.jar
 
 zapp/bin/resources.ap_
+
+zapp/bin/res/drawable/ic_launcher.png

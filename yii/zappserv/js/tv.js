@@ -89,8 +89,8 @@ $(document).ready(function() {
   };
   var setBubblesBy = function () {
     var name = filterUser;
-    if (name == 'Friends') {
-      name = 'Your friends';
+    if (name == 'Official') {
+      name = "Dragon's Den";
     } else if (name === false) {
       name = 'Everyone';
     }

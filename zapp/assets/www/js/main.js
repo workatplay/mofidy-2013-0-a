@@ -80,3 +80,7 @@ $('.placement').click(function () {
 
   comments.sendComment(commentData['message'], commentData['position'], commentData['time']);
 });
+
+$('.feed-selector').on('change', 'input', function (e) {
+  // todo: send command via ajax
+});

@@ -4,6 +4,7 @@ $(document).ready(function() {
   var intervalDur = 1;
   var lastId = 0;
   var comments = [];
+  var $player = $('video');
  
   var getComments = function () {
     $.ajax({
@@ -11,7 +12,7 @@ $(document).ready(function() {
       data: {
         rand: Math.random(),
         r: 'site/commentList',
-//        video: "",
+        //        video: "",
         lastId: lastId
       },
       success: function (data) {
@@ -50,22 +51,23 @@ $(document).ready(function() {
       var comment = comments.shift();
       comment.time = parseInt(comment.time);
       
-      if (comment.time < curVideoTime) {
+      if (curVideoTime-1 < comment.time && comment.time < curVideoTime) {
         showComment(comment);
-      } else {
-        putBack.push(comment);
       }
+      putBack.push(comment);
     }
     comments = putBack.slice(0);
   };
   
-  setInterval(function () {
-    getComments();
-    showComments();
-    curVideoTime += intervalDur;
-  }, intervalDur*1000);
-//  var $video = $('video');
-//  $video.css({
-//    width: $(window).width()
-//  })
+  var interval;
+  $player.on('play', function() {
+    var video = this;
+    clearInterval(interval);
+    
+    interval = setInterval(function () {
+      getComments();
+      showComments();
+      curVideoTime = video.currentTime;
+    }, intervalDur*1000);
+  })
 });

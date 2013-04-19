@@ -21,9 +21,22 @@ body {
   text-align: center;
 }
 #playerhud {
-  background: url('graphics/rewind.png') no-repeat 50% 50%;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  position: absolute;
+  z-index: 10;
+  width: 128px;
+  height: 128px;
+  top: 50%;
+  left: 50%;
+  margin: -64px 0 0 -64px;
+  background: rgba(255,255,255,0.8) url('graphics/rewind.png') no-repeat 50% 50%;
   background-size: contain;
   opacity: 0;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
   -webkit-transition: opacity 0.5s;
      -moz-transition: opacity 0.5s;
       -ms-transition: opacity 0.5s;

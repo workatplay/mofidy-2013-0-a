@@ -19,7 +19,7 @@ $cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);
 
 <div id="playerhud">Rewind</div>
 
-<video width="100%" height="100%" controls>
+<video width="100%" height="100%" controls autoplay>
   <source src="<?php print $base ?>/shows/DragonsDenS7E12.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>

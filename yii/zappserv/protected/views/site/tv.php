@@ -1,7 +1,7 @@
 <?php 
 $base = Yii::app()->getBaseUrl();
 $cs = Yii::app()->getClientScript();
-$cs->registerScriptFile($base . '/js/tvComments.js', CClientScript::POS_END);  
+$cs->registerScriptFile($base . '/js/tv.js', CClientScript::POS_END);  
 ?>
 
 <div id="comments" style="position: absolute; z-index: 2;">

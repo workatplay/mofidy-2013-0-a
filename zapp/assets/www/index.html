@@ -15,17 +15,15 @@
     <div class="ui-mobile-viewport" id="wrapper-main">
 
       <section data-role="page" id="feed">
-        <header class="ui-body" data-role="header" data-position="fixed">
+        <header class="ui-body" data-role="header">
           <h3>You are watching: <span>Dragon's Den Something Something</span></h3>
           <form>
             <input type="range" name="timeline" id="timeline" data-highlight="true" min="0" max="100" value="50">
           </form>
           <ul data-role="controlgroup" data-type="horizontal" class="localnav ui-corner-all ui-controlgroup ui-controlgroup-horizontal">
             <div class="ui-controlgroup-controls">
-              <li class="ui-checkbox"><a href="#" data-role="button" data-transition="fade" class="ui-btn ui-corner-left ui-btn-up-c" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"><span class="ui-btn-inner ui-corner-left"><span class="ui-btn-text">All</span></span></a></li>
-              <li class="ui-checkbox"><a href="#" data-role="button" data-transition="fade" class="ui-btn ui-btn-up-c" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"><span class="ui-btn-inner"><span class="ui-btn-text">Popular</span></span></a></li>
-              <li class="ui-checkbox"><a href="#" data-role="button" data-transition="fade" class="ui-btn-active ui-btn ui-btn-up-c" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Friends</span></span></a></li>
-              <li class="ui-checkbox"><a href="#" data-role="button" data-transition="fade" class="ui-btn-active ui-btn ui-btn-up-c" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-btn-up-c ui-corner-right ui-controlgroup-last"><span class="ui-btn-inner ui-corner-right ui-controlgroup-last"><span class="ui-btn-text">The Den</span></span></a></li>
+              <li class="ui-checkbox"><a href="#" data-role="button" data-transition="fade" class="ui-btn ui-corner-left ui-btn-up-c" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"><span class="ui-btn-inner ui-corner-left"><span class="ui-btn-text">Restart</span></span></a></li>
+              <li class="ui-checkbox"><a href="#" data-role="button" data-transition="fade" class="ui-btn ui-btn-up-c" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"><span class="ui-btn-inner"><span class="ui-btn-text">Play/Pause</span></span></a></li>
             </div>
           </ul>
         </header>
@@ -94,10 +92,12 @@
           </form>
         </header>
         <div class="ui-body" data-role="content">
-          <a href="#feed" class="placement" id="place-tl"></a>
-          <a href="#feed" class="placement" id="place-tr"></a>
-          <a href="#feed" class="placement" id="place-bottom"></a>
-          <img src="http://placehold.it/800x800" class="backplate" />
+          <div id="placement-chooser">
+            <a href="#feed" class="placement" id="place-tl"></a>
+            <a href="#feed" class="placement" id="place-tr"></a>
+            <a href="#feed" class="placement" id="place-bottom"></a>
+            <img src="http://placehold.it/800x800" class="backplate" />
+          </div>
         </div>
       </section>
 

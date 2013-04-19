@@ -1,4 +1,13 @@
-img.backplate {
+#placement-chooser {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50px;
+  bottom: 0;
+  background: #666;
+}
+
+#placement-chooser img.backplate {
   width: 100%;
   height: auto;
   display: block;

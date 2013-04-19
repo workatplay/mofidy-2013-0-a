@@ -50,19 +50,27 @@ $(document).ready(function() {
     
     while (comments.length > 0) {
       var comment = comments.shift();
-      var show = true;
       comment.time = parseInt(comment.time);
       
-      if (filterUser) {
-        if (filterUser == 'Friends') {
-          show = filterUser != comment.user && 'Official' != comment.user;
-        } else {
-          show = filterUser == comment.user;
-        }
-      }
       
-      if (show && curVideoTime-1 < comment.time && comment.time < curVideoTime) {
-        showComment(comment);
+      if (curVideoTime-1 < comment.time && comment.time < curVideoTime) {
+        var show = true;
+        if (filterUser) {
+          show = false;
+          if (filterUser == 'Friends') {
+            if (app.user == comment.user || 'Official' == comment.user) {
+              show = false;
+            } else {
+              show = true;
+            }
+          } else {
+            show = filterUser == comment.user;
+          }
+        }
+          console.log('filter by', filterUser, show);
+        if (show) {
+          showComment(comment);
+        }
       }
       putBack.push(comment);
     }
@@ -87,8 +95,11 @@ $(document).ready(function() {
         user: app.user 
       },
       success: function (data) {
-        if (data.command == 'changeFeed') {
-          filterUser = data.user;
+        if (data && data.command) {
+          console.log('applyCommand', data);
+          if (data.command == 'changeFeed') {
+            filterUser = data.data.user;
+          }
         }
       }
     });    

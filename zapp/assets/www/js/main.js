@@ -68,6 +68,7 @@ $('#trigger-add').click(function () {
 
 $('#trigger-placement').click(function () {
   window.commentData['message'] = $('textarea[name=message]').val();
+  $('textarea[name=message]').val('');
 });
 
 $('.placement').click(function () {

@@ -16,7 +16,9 @@
     </div><!-- page -->
     
 		<script>
-			var baseUrl = '<?php echo Yii::app()->request->baseUrl; ?>';
+      var app = {
+        basePath: '<?php echo Yii::app()->request->baseUrl; ?>'
+      };
 		</script>    
 		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.9.1.js"></script>
 

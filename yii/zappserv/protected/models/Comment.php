@@ -96,6 +96,8 @@ class Comment extends CActiveRecord
   
 // custom:  
  	public function afterFind() {
+    $this->id = (int)$this->id;
+    $this->time = (int)$this->time;
  		$this->data = json_decode($this->data);
  	}
    
